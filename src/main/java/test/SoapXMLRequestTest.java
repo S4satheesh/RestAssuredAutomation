@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.equalTo;
 
 public class SoapXMLRequestTest {
 
@@ -33,7 +34,7 @@ public class SoapXMLRequestTest {
                     .when()
                     .post("/calculator.asmx")
                     .then()
-                    .statusCode(200).log().all();
+                    .statusCode(200).log().all().and().body("//*:AddResult.text()", equalTo("5"));
         }
         else{
             System.out.println("No file");
