@@ -9,7 +9,6 @@ public class TestGetAPI {
     public static void main(String[] args) {
         // Set Base URI
         RestAssured.baseURI = "https://jsonplaceholder.typicode.com";
-
         // Perform GET request
         Response response =
                 given()
@@ -31,6 +30,7 @@ public class TestGetAPI {
         int id = response.jsonPath().getInt("id");
         System.out.println("id: " + id);
         String title = response.jsonPath().getString("title");
+        System.out.println("title: " + title);
 
         String body = response.jsonPath().get("body");
         System.out.println("body: " + body);
